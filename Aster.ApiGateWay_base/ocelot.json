@@ -1,0 +1,106 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/auth",
+      "DownstreamScheme": "http",
+      "DownstreamHost": "localhost",
+      "DownstreamPort": 9009,
+      "UpstreamPathTemplate": "/api/auth",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UserService",
+      //下游请求，即API Gateway转发的⽬目标服务地址
+      "DownstreamPathTemplate": "/api/User/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [ //多节点负载
+        {
+          "Host": "127.0.0.1",
+          "Port": 9001
+        },
+        {
+          "Host": "127.0.0.1",
+          "Port": 9002
+        }
+      ],
+      // LoadBalancer将决定负载均衡的算法，三种取值
+      // RoundRobin：轮流发送
+      // LeastConnection：将请求发往最空闲的那个服务器
+      // NoLoadBalance：总是发往第一个请求或者是服务发现
+      "LoadBalancerOptions": { //负载均衡方式
+        "Type": "RoundRobin"
+      },
+      //上游请求,即客户端请求到API Gateway的请求
+      "UpstreamPathTemplate": "/api/User/{url}", //请求路径模板
+      "UpstreamHttpMethod": [ "Get", "Post" ], //请求方法数组
+
+      //限流
+      "RateLimitOptions": {
+        "ClientWhitelist": [], //白名单
+        "EnableRateLimiting": true, //是否启用限流
+        "Period": "10s", //统计时间段
+        "Limit": 30, //在统计时间段内允许的最大请求数量。即：10秒内只允许30次请求
+        "PeriodTimespan": 5 //多少秒之后客户端可以重试
+      },
+
+      //服务质量与熔断
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3, //允许多少个异常请求
+        "DurationOfBreak": 5, //熔断的时间，单位为秒
+        "TimeoutValue": 5000 //如果下游请求的处理时间超过多少则自动将请求设置为超时
+      }
+
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "TradeService",
+      //下游请求，即API Gateway转发的⽬目标服务地址
+      "DownstreamPathTemplate": "/api/Trade/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [ //多节点
+        {
+          "Host": "127.0.0.1",
+          "Port": 9003
+        },
+        {
+          "Host": "127.0.0.1",
+          "Port": 9004
+        }
+      ],
+      // LoadBalancer将决定负载均衡的算法，三种取值
+      // RoundRobin：轮流发送
+      // LeastConnection：将请求发往最空闲的那个服务器
+      // NoLoadBalance：总是发往第一个请求或者是服务发现
+      "LoadBalancerOptions": { //负载均衡方式
+        "Type": "RoundRobin"
+      },
+      //上游请求,即客户端请求到API Gateway的请求
+      "UpstreamPathTemplate": "/api/Trade/{url}", //请求路径模板
+      "UpstreamHttpMethod": [ "Get", "Post" ], //请求方法数组
+
+      //限流
+      "RateLimitOptions": {
+        "ClientWhitelist": [], //白名单
+        "EnableRateLimiting": true, //是否启用限流
+        "Period": "10s", //统计时间段
+        "Limit": 30, //在统计时间段内允许的最大请求数量。即：10秒内只允许30次请求
+        "PeriodTimespan": 5 //多少秒之后客户端可以重试
+      },
+
+      //服务质量与熔断
+      "QoSOptions": {
+        "DurationOfBreak": 5, //熔断的时间，单位为秒
+        "ExceptionsAllowedBeforeBreaking": 3, //允许多少个异常请求
+        "TimeoutValue": 5000 //如果下游请求的处理时间超过多少则自动将请求设置为超时
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "ConfigurationKey": "OcelotGateway",
+      "Host": "127.0.0.1", // Consul Service IP
+      "Port": 8500 // Consul Service Port
+    }
+  }
+}

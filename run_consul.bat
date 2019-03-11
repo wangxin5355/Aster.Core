@@ -1,0 +1,1 @@
+Consul.exe agent --dev

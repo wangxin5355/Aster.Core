@@ -1,0 +1,1 @@
+dotnet -d run Aster.TradeService.csproj --urls http://127.0.0.1:9004  --no-incremental

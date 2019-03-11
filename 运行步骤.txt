@@ -1,0 +1,13 @@
+1、第一步，运行当前目前的run_consul.bat 启动consul   
+Consul管理后台：http://localhost:8500/ui 可以产看服务节点
+2、第二步，启动服务节点，分别运行UserService下的run_9001.bat 和run_9002.bat 用户服务将会启动两个节点对应端口分别是9001和9002
+ TradeService 下run_9003.bat 和run_9004.bat 交易服务将会启动两个节点在9003和9004端口
+ 以及权限服务
+3、第三步。启动ApiGateWay下的run_5000.bat  ApiGateWay将会启动到5000端口
+4、访问UserService接口和TradeService接口，入口都是从127.0.0.1:5000
+直接访问UserService：127.0.0.1:9001/api/User/values或者127.0.0.1:9002/api/User/values
+直接访问TradeService:127.0.0.1:9003/api/Trade/values或者127.0.0.1:9004/api/Trade/values
+试用ApiGateWay访问：
+UserService： eg:  127.0.0.1:5000/api/User/values
+
+TradeService：eg:127.0.0.1:5000/api/Trade/values

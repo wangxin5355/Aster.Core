@@ -1,0 +1,1 @@
+dotnet -d run Aster.UserService.csproj --urls http://127.0.0.1:9002  --no-incremental
