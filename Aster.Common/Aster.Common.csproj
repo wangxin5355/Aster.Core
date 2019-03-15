@@ -9,7 +9,7 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Dapper" Version="1.60.1" />
     <PackageReference Include="Hangfire.AspNetCore" Version="1.6.22" />
     <PackageReference Include="Hangfire.Core" Version="1.6.22" />
     <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="2.2.0" />

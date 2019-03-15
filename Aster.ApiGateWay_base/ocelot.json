@@ -1,18 +1,10 @@
 ﻿{
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/api/auth",
-      "DownstreamScheme": "http",
-      "DownstreamHost": "localhost",
-      "DownstreamPort": 9009,
-      "UpstreamPathTemplate": "/api/auth",
-      "UpstreamHttpMethod": [ "Get" ]
-    },
-    {
       "UseServiceDiscovery": true,
       "ServiceName": "UserService",
       //下游请求，即API Gateway转发的⽬目标服务地址
-      "DownstreamPathTemplate": "/api/User/{url}",
+      "DownstreamPathTemplate": "/api/user/{url}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [ //多节点负载
         {
@@ -32,7 +24,7 @@
         "Type": "RoundRobin"
       },
       //上游请求,即客户端请求到API Gateway的请求
-      "UpstreamPathTemplate": "/api/User/{url}", //请求路径模板
+      "UpstreamPathTemplate": "/api/user/{url}", //请求路径模板
       "UpstreamHttpMethod": [ "Get", "Post" ], //请求方法数组
 
       //限流

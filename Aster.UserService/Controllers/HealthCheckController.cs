@@ -17,6 +17,7 @@ namespace Aster.UserService.Controllers
     {
         [HttpGet("")]
         [HttpHead("")]
+        [AllowAnonymous]
         public IActionResult Get()
         {
             return Ok();

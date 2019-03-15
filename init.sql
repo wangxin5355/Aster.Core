@@ -17,7 +17,7 @@ CREATE TABLE t_token  (
   `userId` int(11) NOT NULL,
   `token` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'token',
   `packType` varchar(10) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL COMMENT '平台类型',
-  `createtime` bigint(50) NOT NULL COMMENT '创建',
+  `createTime` bigint(50) NOT NULL COMMENT '创建',
   `expireTime` bigint(20) NOT NULL COMMENT '到期时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `idx_userId_pkType`(`userId`, `packType`) USING BTREE

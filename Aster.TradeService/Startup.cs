@@ -14,6 +14,8 @@ using Aster.TradeService.Extensions;
 using Aster.Cache;
 using Aster.Security;
 using Aster.Localizations;
+using Aster.Services;
+using Aster.Common.Data;
 
 namespace Aster.TradeService
 {
@@ -35,7 +37,8 @@ namespace Aster.TradeService
             //security
             services.AddSecurity((opts) => Configuration.GetSection("TokenOptions").Bind(opts));
 
-
+            services.AddServices(Configuration);
+            services.AddData(Configuration);
             services.AddConsul(Configuration);
             services.AddMvc(options => {
                 options.Filters.Add(typeof(AuthorizationFilter));

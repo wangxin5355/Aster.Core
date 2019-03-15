@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Consul" Version="0.7.2.6" />
+    <PackageReference Include="Dapper" Version="1.60.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="4.7.1" />
   </ItemGroup>
@@ -19,6 +20,7 @@
     <ProjectReference Include="..\Aster.Common\Aster.Common.csproj" />
     <ProjectReference Include="..\Aster.Localizations\Aster.Localizations.csproj" />
     <ProjectReference Include="..\Aster.Security\Aster.Security.csproj" />
+    <ProjectReference Include="..\Aster.Services\Aster.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

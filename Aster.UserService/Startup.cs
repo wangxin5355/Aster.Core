@@ -13,6 +13,9 @@ using Microsoft.Extensions.Options;
 using Aster.UserService.Extensions;
 using Aster.Cache;
 using Aster.Security;
+using Aster.Services;
+using Aster.Common.Data;
+using Aster.Localizations;
 
 namespace Aster.UserService
 {
@@ -29,9 +32,13 @@ namespace Aster.UserService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDistributedRedisCache(Configuration);
+            services.AddLocalizationOption(opts => Configuration.GetSection("Localization").Bind(opts));
+            services.AddSqlStringLocalizer(opts => Configuration.GetSection("Localization").Bind(opts));
+
             //security
             services.AddSecurity((opts) => Configuration.GetSection("TokenOptions").Bind(opts));
-
+            services.AddServices(Configuration);
+            services.AddData(Configuration);
             services.AddConsul(Configuration);
             services.AddMvc(options => {
                 options.Filters.Add(typeof(AuthorizationFilter));

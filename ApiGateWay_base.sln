@@ -17,11 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Security", "Aster.Sec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Cache", "Aster.Cache\Aster.Cache.csproj", "{39B1E592-B725-43DF-BB4F-813F4E0E9FBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aster.Entities", "Aster.Entities\Aster.Entities.csproj", "{A9A2DE01-BB82-4990-8805-7575A72BF325}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Entities", "Aster.Entities\Aster.Entities.csproj", "{A9A2DE01-BB82-4990-8805-7575A72BF325}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Common", "Aster.Common\Aster.Common.csproj", "{09511060-E4C7-44CD-9F66-8A7C1DF7A403}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Localizations", "Aster.Localizations\Aster.Localizations.csproj", "{2263DECE-6316-4DBD-8AD0-AE0880E898CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aster.Services", "Aster.Services\Aster.Services.csproj", "{C114286C-77A0-417A-8F8A-1A2C3F2B5908}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NETCore.MailKit", "NETCore.MailKit\NETCore.MailKit.csproj", "{FB420A1D-6D18-4B30-85E6-B4D2C46E0E41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,14 @@ Global
 		{2263DECE-6316-4DBD-8AD0-AE0880E898CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2263DECE-6316-4DBD-8AD0-AE0880E898CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2263DECE-6316-4DBD-8AD0-AE0880E898CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C114286C-77A0-417A-8F8A-1A2C3F2B5908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C114286C-77A0-417A-8F8A-1A2C3F2B5908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C114286C-77A0-417A-8F8A-1A2C3F2B5908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C114286C-77A0-417A-8F8A-1A2C3F2B5908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB420A1D-6D18-4B30-85E6-B4D2C46E0E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB420A1D-6D18-4B30-85E6-B4D2C46E0E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB420A1D-6D18-4B30-85E6-B4D2C46E0E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB420A1D-6D18-4B30-85E6-B4D2C46E0E41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
