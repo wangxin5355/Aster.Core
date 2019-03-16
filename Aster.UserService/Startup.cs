@@ -16,6 +16,9 @@ using Aster.Security;
 using Aster.Services;
 using Aster.Common.Data;
 using Aster.Localizations;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace Aster.UserService
 {
@@ -40,6 +43,14 @@ namespace Aster.UserService
             services.AddServices(Configuration);
             services.AddData(Configuration);
             services.AddConsul(Configuration);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("user", new Info { Title = "UserServiceApi", Version = "v1" });
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var xmlPath = Path.Combine(basePath, "Aster.UserService.xml");
+                c.IncludeXmlComments(xmlPath);
+            });
+            services.AddMvcCore().AddApiExplorer();
             services.AddMvc(options => {
                 options.Filters.Add(typeof(AuthorizationFilter));
                 options.Filters.Add(typeof(MyExceptionFilter));
@@ -52,14 +63,18 @@ namespace Aster.UserService
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-               
-                app.UseConsul();
-            }
+            }  
+            app.UseConsul();
             app.UseSecurity();
             app.UseMvc();
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "api/{documentName}/swagger.json";
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/Sapi/user/swagger.json", "user");
+            });
         }
     }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aster.UserService</name>
+    </assembly>
+    <members>
+        <member name="M:Aster.UserService.Extensions.RegisterToConsulExtension.AddConsul(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            添加Consul功能
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Aster.UserService.Extensions.RegisterToConsulExtension.UseConsul(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            使用Consul
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Aster.UserService.ViewModel.LoginViewModel.UserName">
+            <summary>
+            用户名（邮箱/手机号)
+            </summary>
+        </member>
+        <member name="P:Aster.UserService.ViewModel.LoginViewModel.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+    </members>
+</doc>

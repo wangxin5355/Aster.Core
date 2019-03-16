@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Aster.ApiGateWay_base</name>
+    </assembly>
+    <members>
+        <member name="M:Aster.ApiGateWay_base.Middlerwares.ApiRequestLogMiddlerware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            请求日志记录
+            </summary>
+        </member>
+    </members>
+</doc>

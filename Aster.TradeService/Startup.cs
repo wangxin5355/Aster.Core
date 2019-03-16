@@ -16,6 +16,9 @@ using Aster.Security;
 using Aster.Localizations;
 using Aster.Services;
 using Aster.Common.Data;
+using Swashbuckle.AspNetCore.Swagger;
+using System.IO;
+using Microsoft.Extensions.PlatformAbstractions;
 
 namespace Aster.TradeService
 {
@@ -44,6 +47,15 @@ namespace Aster.TradeService
                 options.Filters.Add(typeof(AuthorizationFilter));
                 options.Filters.Add(typeof(MyExceptionFilter));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("TradeServiceApi", new Info { Title = "TradeServiceApi", Version = "v1" });
+                var basePath = PlatformServices.Default.Application.ApplicationBasePath;
+                var xmlPath = Path.Combine(basePath, "Aster.TradeService.xml");
+                c.IncludeXmlComments(xmlPath);
+            });
+            services.AddMvcCore().AddApiExplorer();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,12 +65,18 @@ namespace Aster.TradeService
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseConsul();
-            }
+
+            app.UseConsul();
             app.UseSecurity();
             app.UseMvc();
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "{documentName}/swagger.json";
+            });
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/TradeServiceApi/swagger.json", "TradeServiceApi");
+            });
         }
     }
 }
